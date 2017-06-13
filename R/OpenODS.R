@@ -55,13 +55,15 @@ ods_api <- function(path, query = NULL){
 #' Print method for openods class
 #'
 #' @param x An \code{openods} object
-#' @param ...
+#' @param ... Not used.
 #'
 #' @return Nothing
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' print(x)
+#' }
 print.openods <- function(x, ...) {
   cat("<OpenODS ", x$path, ">\n", sep = "")
   str(x$content)
@@ -80,7 +82,7 @@ print.openods <- function(x, ...) {
 #'
 #' @examples
 #' ods_roles()
-#' ods_roles("RO0101")
+#' ods_roles("RO101")
 ods_roles <- function(code = NULL){
 
   if (is.null(code)){
@@ -99,4 +101,41 @@ ods_roles <- function(code = NULL){
   }
 
   tibble::tibble(codes = codes, name = name)
+}
+
+#' Return organizations from a search on any of their characteristics
+#'
+#' @param query String.
+#'
+#' @return openods object.
+#' @export
+#'
+#' @examples
+#' ods_organisations(query = "q=RADCLIFFE")
+ods_organisations <- function(query = NULL){
+
+  path = "/api/organisations"
+  resp <- ods_api(path = path, query = query)
+  resp
+}
+
+#' Return all organizations with the same role code
+#'
+#' @param code String: the ODS role code.
+#' @param raw Logical: whether to return the raw data
+#'
+#' @return openods object, a list with three components
+#' @export
+#'
+#' @examples
+#' ods_rolecode(code = "RO101")
+ods_rolecode <- function(code = NULL, raw = TRUE){
+  query <- paste0("roleCode=", code)
+
+  resp <- ods_organisations(query = query)
+
+  if (isTRUE(raw)) return(resp)
+  else stop("Not yet implemented", call. = FALSE)
+
+
 }

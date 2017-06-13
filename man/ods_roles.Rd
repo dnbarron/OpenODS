@@ -19,5 +19,5 @@ Retrieve role types
 }
 \examples{
 ods_roles()
-ods_roles("RO0101")
+ods_roles("RO101")
 }

@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{An \code{openods} object}
 
-\item{...}{}
+\item{...}{Not used.}
 }
 \value{
 Nothing
@@ -18,5 +18,7 @@ Nothing
 Print method for openods class
 }
 \examples{
+\dontrun{
 print(x)
+}
 }

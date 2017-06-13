@@ -2,5 +2,7 @@
 
 S3method(print,openods)
 export(ods_api)
+export(ods_organisations)
+export(ods_rolecode)
 export(ods_roles)
 import(httr)
