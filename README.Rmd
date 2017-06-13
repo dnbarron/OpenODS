@@ -1,0 +1,3 @@
+# OpenODS
+
+OpenODS is an R client for the OpenODS Organizational API for the NHS.
